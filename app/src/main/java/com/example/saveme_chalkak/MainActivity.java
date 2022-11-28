@@ -103,6 +103,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //시작버튼
+        ImageButton startBtn = (ImageButton) findViewById(R.id.startBtn);
+        startBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Record_activity.class);
+                startActivity(intent);
+            }
+        });
+
         Button test_btn = (Button) findViewById(R.id.test_btn);
         test_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -138,7 +148,10 @@ public class MainActivity extends AppCompatActivity {
                             if (fear_flag = true && hr_test[count] > sensitivity * hr_avg){
                                 System.out.printf("%d", hr_test[count]);
                                 System.out.printf("%f", sensitivity * hr_avg);
-                                camera_on();
+                                //camera_on();
+                                //녹화 화면으로 이동
+                                Intent intent = new Intent(getApplicationContext(), Record_activity.class);
+                                startActivity(intent);
 //                                timer.cancel();
                             }
 
@@ -151,15 +164,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-        //시작버튼
-        ImageButton startBtn = (ImageButton) findViewById(R.id.startBtn);
-        startBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Record_activity.class);
-                startActivity(intent);
-            }
-        });
+
 
         //내 정보 수정하기
         Button editBtn = (Button) findViewById(R.id.editbtn);
@@ -172,10 +177,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-    public void camera_on(){
-        System.out.println("CAMERA_ON");
-    }
-
 
 
 }
