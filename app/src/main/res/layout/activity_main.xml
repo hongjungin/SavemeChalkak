@@ -27,7 +27,6 @@
         android:id="@+id/sense_v"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="현재 설정된 민감도는 1.6 입니다"
         android:layout_margin="15dp"
         android:layout_gravity="center"/>
 

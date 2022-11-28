@@ -64,8 +64,7 @@ public class Edit_activity extends AppCompatActivity {
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent backIntent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(backIntent);
+                finish();
             }
         });
     }
