@@ -61,9 +61,8 @@ public class MainActivity extends AppCompatActivity {
 
                     //평균 심박수 값 전달
                     Intent intent = new Intent(MainActivity.this, Edit_activity.class);
-                    startActivity(intent);
                     intent.putExtra("hr_avg", hr_avg);
-
+                    startActivity(intent);
 
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -84,12 +83,7 @@ public class MainActivity extends AppCompatActivity {
                 else if (i > 20) i = 20;
 
                 sensitivity = (float)sb.getProgress()/10;
-                sense_v.setText(String.format("선택하신 값은 %.1f입니다", sensitivity));
-
-                //민감도 값 전달
-                Intent intent = new Intent(MainActivity.this, Edit_activity.class);
-                startActivity(intent);
-                intent.putExtra("sensitivity", sensitivity);
+                sense_v.setText(String.format("현재 설정된 민감도는 %.1f입니다", sensitivity));
             }
 
             @Override
@@ -99,7 +93,10 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-
+                //민감도 값 전달
+                Intent intent = new Intent(MainActivity.this, Edit_activity.class);
+                intent.putExtra("sensitivity", sensitivity);
+                startActivity(intent);
             }
         });
 
@@ -148,11 +145,11 @@ public class MainActivity extends AppCompatActivity {
                             if (fear_flag = true && hr_test[count] > sensitivity * hr_avg){
                                 System.out.printf("%d", hr_test[count]);
                                 System.out.printf("%f", sensitivity * hr_avg);
-                                //camera_on();
                                 //녹화 화면으로 이동
                                 Intent intent = new Intent(getApplicationContext(), Record_activity.class);
                                 startActivity(intent);
-//                                timer.cancel();
+
+                                timer.cancel();
                             }
 
                         }

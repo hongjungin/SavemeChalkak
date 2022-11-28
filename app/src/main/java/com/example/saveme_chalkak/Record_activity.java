@@ -32,8 +32,6 @@ public class Record_activity extends AppCompatActivity implements  SurfaceHolder
     private SurfaceHolder surfaceHolder;
     private boolean recording = false;
 
-
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

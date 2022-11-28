@@ -5,12 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btn_record"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="녹화 시작"
-        />
+
     <SurfaceView
         android:id="@+id/surfaceview"
         android:layout_width="match_parent"

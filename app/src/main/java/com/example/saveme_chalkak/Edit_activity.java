@@ -26,7 +26,6 @@ public class Edit_activity extends AppCompatActivity {
     String sharerecord = "file3";
     Button saveBtn;
 
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +38,6 @@ public class Edit_activity extends AppCompatActivity {
         avg_tv = (TextView) findViewById(R.id.textView6);
         sensitivity_tv = (TextView) findViewById(R.id.textView7);
 
-
         SharedPreferences sp_name = getSharedPreferences(sharedname, 0);
         String value1 = sp_name.getString("hong", "");
         name.setText(value1);
@@ -51,16 +49,25 @@ public class Edit_activity extends AppCompatActivity {
         SharedPreferences sp_record = getSharedPreferences(sharerecord, 0);
         String value3 = sp_record.getString("record", "");
         record.setText(value3);
+
         //평균 심박수 받아오기
         Intent avgIntent = getIntent();
-        String avg = avgIntent.getStringExtra("hr_avg");
+        float avg = avgIntent.getFloatExtra("hr_avg", 0);
+
         //민감도 받아오기
         Intent sensitivityIntent = getIntent();
-        String sensitivity = sensitivityIntent.getStringExtra("sensitivity");
+        float sensitivity = sensitivityIntent.getFloatExtra("sensitivity", 1);
 
-        avg_tv.setText(avg);
-        sensitivity_tv.setText(sensitivity);
+        avg_tv.setText(String.valueOf(avg));
+        sensitivity_tv.setText(String.valueOf(sensitivity));
 
+        saveBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent backIntent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(backIntent);
+            }
+        });
     }
 
     @Override
